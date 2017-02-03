@@ -13,7 +13,7 @@ Python 2.7
 
 ### Installing
 
-`sudo pip install xkcdpass`
+`sudo pip install xkcdpassword`
 
 ### Authors
 
