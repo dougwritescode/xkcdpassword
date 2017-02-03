@@ -2,8 +2,8 @@
 
 from distutils.core import setup
 setup(
-	name = 'xkcdpass',
-	packages = ['xkcdpass'],
+	name = 'xkcdpassword',
+	packages = ['xkcdpassword'],
 	version = '0.1',
 	description = 'A generator of xkcd-style passwords',
 	author = 'Doug Walter',
