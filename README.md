@@ -17,7 +17,8 @@ Python 2.7
 
 ### Authors
 
-* **Doug Walter**
+* **Doug Walter** 
+* **dougwritescode@gmail.com**
 
 ### License
 
