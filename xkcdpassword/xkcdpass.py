@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-from random import choice
-import argparse, sys
+import argparse, sys, random
 
 parser = argparse.ArgumentParser(description='Generate an XKCD-style password.')
 parser.add_argument('words', metavar='n', nargs='?', type=int, default=4, help='Number of words to produce (default = 4)', choices=range(1,20))
@@ -17,7 +16,7 @@ def randwords(num):
 	and ensures uniqueness.'''
 	indset = set()
 	while len(indset) < num:
-		indset.add(choice(words))
+		indset.add(random.choice(words))
 	return list(indset)
 	
 if __name__ == "__main__":
