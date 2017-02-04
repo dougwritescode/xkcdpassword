@@ -1,4 +1,4 @@
-xkcdpass
+xkcdpassword
 =
 
 A simple, pure Python, Xkcd-style password generator. 
