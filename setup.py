@@ -4,12 +4,12 @@ from setuptools import setup, find_packages
 setup(
 	name = 'xkcdpassword',
 	packages = ['xkcdpassword'],
-	version = '0.57',
+	version = '0.58',
 	description = 'A generator of xkcd-style passwords',
 	author = 'Doug Walter',
 	author_email = 'dougwritescode@gmail.com',
 	url = 'https://github.com/dougwritescode/xkcdpassword',
-	download_url = 'https://github.com/dougwritescode/xkcdpassword/tarball/0.57', 
+	download_url = 'https://github.com/dougwritescode/xkcdpassword/tarball/0.58', 
 	keywords = 'python xkcd utilities security', 
 	classifiers = ['Development Status :: 3 - Alpha',
 		'Environment :: Console',
@@ -20,7 +20,7 @@ setup(
 		'Topic :: Utilities',],
 	entry_points = {
 		'console_scripts': [
-            'xkcdpassword = xkcdpassword.xkcdpassword:__main__',
+            'xkcdpassword = xkcdpassword.xkcdpassword:main',
         ],
         'gui_scripts': []
 	},
