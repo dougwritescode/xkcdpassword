@@ -15,10 +15,19 @@ Python 2.7
 
 `sudo pip install xkcdpassword`
 
+### Using
+
+`$ xkcdpassword` -> `correct horse battery staple`
+
+`$ xkcdpassword -ns` -> `correcthorsebatterystaple`
+
+`$ xkcdpassword 3` -> `correct horse battery`
+
+`$ xkcdpassword -ns 6` -> `correcthorsebatterystaplethingexplainer`
+
 ### Authors
 
-* **Doug Walter** 
-* **dougwritescode@gmail.com**
+* **Doug Walter** - **dougwritescode@gmail.com**
 
 ### License
 
