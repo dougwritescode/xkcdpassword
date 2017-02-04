@@ -18,5 +18,10 @@ setup(
 		'Programming Language :: Python :: 2.7',
 		'Topic :: Security',
 		'Topic :: Utilities',],
-	scripts=['xkcdpassword/xkcdpassword.py'],
+	entry_points = {
+		'console_scripts': [
+            'xkcdpassword = xkcdpassword.xkcdpassword:__main__',
+        ],
+        'gui_scripts': []
+	},
 )
