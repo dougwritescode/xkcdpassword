@@ -19,10 +19,10 @@ def randwords(num):
 		indset.add(random.choice(words))
 	return list(indset)
 	
-def main(nospace, words):
+def main():
 	'''Primary entry point'''
-	sys.stdout.write(('' if nospace else ' ').join(randwords(words))+'\n')
+	args = parser.parse_args()
+	sys.stdout.write(('' if args.ns else ' ').join(randwords(args.words))+'\n')
 	
 if __name__ == "__main__":
-	args = parser.parse_args()
-	main(args.ns, args.words)
+	main()
