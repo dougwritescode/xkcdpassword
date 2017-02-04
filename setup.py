@@ -18,4 +18,5 @@ setup(
 		'Programming Language :: Python :: 2.7',
 		'Topic :: Security',
 		'Topic :: Utilities',],
+	scripts=['xkcdpassword/xkcdpassword.py'],
 )
