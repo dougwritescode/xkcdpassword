@@ -28,3 +28,7 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 * Randall Patrick Munroe, the ruler of the geek pantheon.
 
+
+
+[![PyPI](https://img.shields.io/pypi/v/nine.svg)](https://github.com/dougwritescode/xkcdpassword)
+[![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)](https://github.com/dougwritescode/xkcdpassword)
