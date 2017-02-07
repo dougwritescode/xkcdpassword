@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
-import argparse, sys, random, os
+import argparse, sys, random, os, pyperclip
 
 parser = argparse.ArgumentParser(description='Generate an XKCD-style password.')
 parser.add_argument('words', metavar='n', nargs='?', type=int, default=4, help='Number of words to produce (default = 4)', choices=range(1,20))
-parser.add_argument('-ns', help='Remove spaces for copy-pasting or piping', action='store_true')
-parser.add_argument('--seed', help='Seed for random function, if you want predictable results', action='store')
+parser.add_argument('-n', '--no-spaces', help='Remove spaces for copy-pasting or piping', action='store_true')
+parser.add_argument('-s', '--seed', help='Seed for random function, if you want predictable results', action='store')
+parser.add_argument('-c', '--clip', help='Send result to clipboard rather than sys.stdout', action='store_true')
 	
 #TODO: Maybe hard-code wordlist, for fast retrieval	
 	
@@ -29,9 +30,13 @@ def randwords(num, inseed):
 	return words
 	
 def main():
-	'''Primary entry point from setuptools'''
+	'''Primary entry point'''
 	args = parser.parse_args()
-	sys.stdout.write(('' if args.ns else ' ').join(randwords(args.words, args.seed))+'\n')
+    outstr = ('' if args.ns else ' ').join(randwords(args.words, args.seed)) +'\n'
+    if args.c:
+        pyperclip.copy(outstr)
+    else:
+	    sys.stdout.write(outstr)
 	
 if __name__ == "__main__":
 	main()
