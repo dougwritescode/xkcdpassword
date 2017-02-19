@@ -3,7 +3,7 @@
 from pyperclip import copy
 from argparse import ArgumentParser
 from os.path import join, dirname, realpath
-from sys.stdout import write
+from sys import stdout
 from random import randint, seed
 
 localpath = dirname(realpath(__file__))
@@ -13,9 +13,9 @@ parser.add_argument('words', nargs='?', type=int, default=4, help='Number of wor
 parser.add_argument('-c', '--clip', help='Send result to clipboard rather than sys.stdout', action='store_true')
 parser.add_argument('-n', '--nospaces', help='Don\'t separate the output passphrase with spaces; Overrides delimiter option', action='store_true')
 parser.add_argument('-e', '--easywords', help='Use a dictionary of more common words', action='store_true')
-parser.add_argument('-s', '--seed', help='Seed for random function, if you want predictable results', action='store')
-parser.add_argument('-d', '--delimiter', type=str, default=' ', help='Custome character or string to split words', action='store')
-parser.add_argument('-f', '--dictionaryfile', type=str, default=join(localpath, 'words.txt'), help='Absolute path to an alternative dictionary', action='store')
+parser.add_argument('-s', '--seed', metavar='SEEDDATA', help='Seed for random function, if you want predictable results', action='store')
+parser.add_argument('-d', '--delimiter', metavar='CHAR/S', default=' ', help='Custom character or string to split words', action='store')
+parser.add_argument('-f', '--dictionaryfile', metavar='FILEPATH', help='Path to an alternative dictionary', action='store')
 
 def randwords(num, inseed, fn): 
 	'''Generates random words from the provided text file
@@ -45,8 +45,8 @@ def main():
 	if args.clip:
 		copy(outstr)
 	else:
-		write(outstr)
-		write('\n')
+		stdout.write(outstr)
+		stdout.write('\n')
 	
 if __name__ == "__main__":
 	main()
