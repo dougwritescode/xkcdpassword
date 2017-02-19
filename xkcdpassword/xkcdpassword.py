@@ -36,7 +36,7 @@ def randwords(num, inseed, fn):
 def main():
 	'''Primary entry point'''
 	args = parser.parse_args()
-	fn = join(localpath, 'oldwords.txt') if args.easywords else args.dictionaryfile
+	fn = join(localpath, 'easywords.txt') if args.easywords else args.dictionaryfile
 	rwords = randwords(args.words, args.seed, fn)
 	outstr = ('' if args.nospaces else args.delimiter).join(rwords)
 	if args.clip:
