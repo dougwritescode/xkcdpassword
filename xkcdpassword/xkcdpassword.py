@@ -9,13 +9,17 @@ from random import randint, seed
 localpath = dirname(realpath(__file__))
 
 parser = ArgumentParser(description='Generate an XKCD-style password.')
-parser.add_argument('words', nargs='?', metavar='WORDCOUNT', type=int, default=4, help='Number of words to produce (default = 4)')
-parser.add_argument('-c', '--clip', help='Send result to clipboard rather than sys.stdout', action='store_true')
-parser.add_argument('-n', '--nospaces', help='Don\'t separate the output passphrase with spaces; Overrides delimiter option', action='store_true')
-parser.add_argument('-e', '--easywords', help='Use a dictionary of more common words', action='store_true')
-parser.add_argument('-s', '--seed', metavar='SEEDDATA', help='Seed for random function, if you want predictable results', action='store')
-parser.add_argument('-d', '--delimiter', metavar='CHAR/S', default=' ', help='Custom character or string to split words', action='store')
-parser.add_argument('-f', '--dictionaryfile', metavar='FILEPATH', default=join(localpath, 'words.txt'), help='Path to an alternative dictionary', action='store')
+outopts = parser.add_argument_group('Output options')
+outopts.add_argument('words', nargs='?', metavar='WORDCOUNT', type=int, default=4, help='Number of words to produce (default = 4)')
+outopts.add_argument('-c', '--clip', help='Send result to clipboard rather than sys.stdout', action='store_true')
+outopts.add_argument('-s', '--seed', metavar='SEEDDATA', help='Seed for random function, if you want predictable results', action='store')
+outmutex = outopts.add_mutually_exclusive_group()
+outmutex.add_argument('-n', '--nospaces', help='Don\'t separate the output passphrase with spaces', action='store_true')
+outmutex.add_argument('-d', '--delimiter', metavar='CHAR/S', default=' ', help='Custom character or string to split words', action='store')
+inopts = parser.add_argument_group('Input options')
+inmutex = inopts.add_mutually_exclusive_group()
+inmutex.add_argument('-e', '--easywords', help='Use an included dictionary of more common words', action='store_true')
+inmutex.add_argument('-f', '--dictionaryfile', metavar='FILEPATH', default=join(localpath, 'words.txt'), help='Path to an alternative dictionary', action='store')
 
 def randwords(num, inseed, fn): 
 	'''Generates random words from the provided text file
