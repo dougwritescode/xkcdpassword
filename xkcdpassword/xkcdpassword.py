@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
-import argparse, sys, random, os, pyperclip
+from pyperclip import copy
+from argparse import ArgumentParser
 from os.path import join, dirname, realpath
+from sys.stdout import write
+from random import randint, seed
 
 localpath = dirname(realpath(__file__))
 
-parser = argparse.ArgumentParser(description='Generate an XKCD-style password.')
+parser = ArgumentParser(description='Generate an XKCD-style password.')
 parser.add_argument('words', nargs='?', type=int, default=4, help='Number of words to produce (default = 4)', choices=range(1,21))
 parser.add_argument('-c', '--clip', help='Send result to clipboard rather than sys.stdout', action='store_true')
 parser.add_argument('-n', '--nospaces', help='Don\'t separate the output passphrase with spaces; Overrides delimiter option', action='store_true')
@@ -24,9 +27,9 @@ def randwords(num, inseed, fn):
 	with open(fn, 'r') as tempfile:
 		indices = []
 		if inseed:
-			random.seed(inseed)
+			seed(inseed)
 		while len(indices) < num:
-			ind = random.randint(0, numlines - 1)
+			ind = randint(0, numlines - 1)
 			if ind not in indices:
 				indices.append(ind)
 		lines = tempfile.readlines()
@@ -40,10 +43,10 @@ def main():
 	rwords = randwords(args.words, args.seed, fn)
 	outstr = ('' if args.nospaces else args.delimiter).join(rwords)
 	if args.clip:
-		pyperclip.copy(outstr)
+		copy(outstr)
 	else:
-		sys.stdout.write(outstr)
-		sys.stdout.write('\n')
+		write(outstr)
+		write('\n')
 	
 if __name__ == "__main__":
 	main()
