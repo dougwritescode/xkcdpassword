@@ -15,7 +15,7 @@ parser.add_argument('-n', '--nospaces', help='Don\'t separate the output passphr
 parser.add_argument('-e', '--easywords', help='Use a dictionary of more common words', action='store_true')
 parser.add_argument('-s', '--seed', metavar='SEEDDATA', help='Seed for random function, if you want predictable results', action='store')
 parser.add_argument('-d', '--delimiter', metavar='CHAR/S', default=' ', help='Custom character or string to split words', action='store')
-parser.add_argument('-f', '--dictionaryfile', metavar='FILEPATH', help='Path to an alternative dictionary', action='store')
+parser.add_argument('-f', '--dictionaryfile', metavar='FILEPATH', default=join(localpath, 'words.txt'), help='Path to an alternative dictionary', action='store')
 
 def randwords(num, inseed, fn): 
 	'''Generates random words from the provided text file
