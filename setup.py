@@ -7,7 +7,7 @@ install_requires = ['pyperclip']
 setup(
 	name = 'xkcdpassword',
 	packages = ['xkcdpassword'],
-	data_files = [('',['xkcdpassword/words.txt',])],
+	data_files = [('xkcdpassword',['xkcdpassword/words.txt','xkcdpassword/oldwords.txt'])],
 	version = '0.6.3',
 	description = 'A generator of xkcd-style passwords',
 	author = 'Doug Walter',
