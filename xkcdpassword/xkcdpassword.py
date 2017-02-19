@@ -9,7 +9,7 @@ from random import randint, seed
 localpath = dirname(realpath(__file__))
 
 parser = ArgumentParser(description='Generate an XKCD-style password.')
-parser.add_argument('words', nargs='?', type=int, default=4, help='Number of words to produce (default = 4)', choices=range(1,21))
+parser.add_argument('words', nargs='?', metavar='WORDCOUNT', type=int, default=4, help='Number of words to produce (default = 4)')
 parser.add_argument('-c', '--clip', help='Send result to clipboard rather than sys.stdout', action='store_true')
 parser.add_argument('-n', '--nospaces', help='Don\'t separate the output passphrase with spaces; Overrides delimiter option', action='store_true')
 parser.add_argument('-e', '--easywords', help='Use a dictionary of more common words', action='store_true')
