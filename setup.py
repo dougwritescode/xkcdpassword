@@ -7,7 +7,6 @@ install_requires = ['pyperclip']
 setup(
 	name = 'xkcdpassword',
 	packages = ['xkcdpassword'],
-	data_files = [('xkcdpassword',['xkcdpassword/words.txt','xkcdpassword/oldwords.txt'])],
 	version = '0.6.3',
 	description = 'A generator of xkcd-style passwords',
 	author = 'Doug Walter',
@@ -15,6 +14,7 @@ setup(
 	url = 'https://github.com/dougwritescode/xkcdpassword',
 	download_url = 'https://github.com/dougwritescode/xkcdpassword/tarball/0.6.3', 
 	keywords = 'python xkcd utilities security password', 
+	license='MIT',
 	classifiers = ['Development Status :: 3 - Alpha',
 		'Environment :: Console',
 		'License :: OSI Approved :: MIT License',
@@ -28,4 +28,6 @@ setup(
         ],
         'gui_scripts': []
 	},
+	zip_safe=False,
+    include_package_data=True,
 )
