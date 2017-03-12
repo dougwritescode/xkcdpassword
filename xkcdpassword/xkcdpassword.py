@@ -2,6 +2,7 @@
 """Generate xkcd-style multiple-word passwords."""
 
 from argparse import ArgumentParser
+from itertools import izip_longest
 from os.path import dirname
 from os.path import join
 from os.path import realpath
@@ -34,17 +35,12 @@ outmutex.add_argument('-n',
                       '--nospaces',
                       help='Don\'t separate the output passphrase with spaces',
                       action='store_true')
-outmutex.add_argument('-d',
-                      '--delimiter',
-                      metavar='CHAR/S',
-                      default=' ',
-                      help='Custom character or string to split words',
-                      action='store')
-outmutex.add_argument('-ds',  # TODO finish_implementation
+outmutex.add_argument('-ds',
                       '--delimiters',
                       metavar='CHAR/S,[CHAR/S, ...]',
                       default=' ',
-                      help='Delimiting characters, comma-separated',
+                      dest='delims',
+                      help='Delimiting characters sequence, comma-separated',
                       action='store')
 inopts = parser.add_argument_group('Input options')
 inmutex = inopts.add_mutually_exclusive_group()
@@ -83,9 +79,19 @@ def randwords(num, inseed, fn):
 def main():
     """Primary entry point."""
     args = parser.parse_args()
-    fn = join(localpath, 'easywords.t if args.easywords else args.dictfile')
+    fn = join(localpath, 'easywords.txt' if args.easywords else args.dictfile)
     rwords = randwords(args.words, args.seed, fn)
-    outstr = ('' if args.nospaces else args.delimiter).join(rwords)
+    if args.nospaces:
+        delims = ['' for a in range(len(rwords) - 1)]
+    elif args.delims != ' ':
+        delims = args.delims.split(',')
+        while len(delims) < len(rwords) - 1:
+            delims.extend(delims)
+        delims = delims[:len(rwords) - 1]
+    else:
+        delims = [' ' for a in range(len(rwords) - 1)]
+    outstr = ''.join([''.join(x)
+                      for x in izip_longest(rwords, delims, fillvalue='')])
     if args.clip:
         copy(outstr)
     else:
