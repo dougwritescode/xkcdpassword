@@ -10,6 +10,7 @@ When invoked, this package will generate a short list of unique words, perhaps t
 ### Prerequisites
 
 Python 2.7
+Pyperclip
 
 ### Installing
 
@@ -24,6 +25,8 @@ Python 2.7
 `$ xkcdpassword 3` -> `correct horse battery`
 
 `$ xkcdpassword -ns 6` -> `correcthorsebatterystaplethingexplainer`
+
+`$ xkcdpassword -h` -> Syntax help
 
 ### Authors
 
